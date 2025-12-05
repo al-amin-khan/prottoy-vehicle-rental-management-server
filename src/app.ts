@@ -1,0 +1,28 @@
+import express, { Request, Response } from "express";
+import initDB from "./config/db";
+import { userRoutes } from "./modules/users/users.routes";
+
+const app = express();
+app.use(express.json());
+
+// initializing DB
+initDB();
+
+app.get("/", (req: Request, res: Response): void => {
+    res.status(200).json({
+        success: true,
+        message: "Prottoy Vehicle Rental Management Server is running",
+    });
+});
+
+app.use("/api/v1/auth/",  userRoutes);
+
+app.use((req, res) => {
+    res.status(404).json({
+        success: false,
+        message: "Route not found",
+        path: req.path,
+    });
+});
+
+export default app;
