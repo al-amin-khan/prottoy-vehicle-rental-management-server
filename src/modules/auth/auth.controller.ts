@@ -4,7 +4,6 @@ import { authServices } from "./auth.service";
 const createUser = async (req: Request, res: Response) => {
     try {
         const result = await authServices.createUser(req.body);
-        console.log(result);
 
         if (typeof result === "string") {
             return res.status(400).json({

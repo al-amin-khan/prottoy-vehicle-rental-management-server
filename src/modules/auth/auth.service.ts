@@ -6,8 +6,6 @@ import config from "../../config";
 const createUser = async (payload: Record<string, unknown>) => {
     const { name, email, password, phone, role } = payload;
 
-    console.log(payload);
-
     const emailLowerCased: string = (email as string).toLowerCase();
 
     if ((password as string).length < 6) {
@@ -33,7 +31,6 @@ const signInUser = async (email: string, password: string) => {
         email,
     ]);
 
-    console.log({ result });
     if (result.rows.length === 0) {
         return null;
     }
@@ -53,8 +50,6 @@ const signInUser = async (email: string, password: string) => {
             expiresIn: "7d",
         }
     );
-
-    console.log({ token });
 
     return { token, user };
 };
