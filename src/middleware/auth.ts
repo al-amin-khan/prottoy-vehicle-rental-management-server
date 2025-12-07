@@ -5,7 +5,6 @@ import config from "../config";
 // roles for ["admin", "customer"]
 const  auth = (...roles: string[]) => {
     return async (req: Request, res: Response, next: NextFunction) => {
-        console.log(req.headers)
         try {
             const token = req.headers.authorization?.split(" ")[1];
             
