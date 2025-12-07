@@ -17,7 +17,7 @@ const getVehicle = async (id: number) => {
     `,
         [id]
     );
-    return result.rows[0];
+    return result.rows;
 };
 
 const createVehicle = async (payload: Record<string, unknown>) => {
@@ -32,7 +32,7 @@ const createVehicle = async (payload: Record<string, unknown>) => {
         `
         INSERT INTO vehicles (vehicle_name, type, registration_number, daily_rent_price, availability_status)
         VALUES ($1, $2, $3, $4, $5)
-        RETURNING *;
+        RETURNING id, vehicle_name, type, registration_number, daily_rent_price, availability_status;
     `,
         [
             vehicle_name,
