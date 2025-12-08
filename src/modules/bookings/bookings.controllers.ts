@@ -80,7 +80,7 @@ const updateBooking = async (req: Request, res: Response) => {
             );
             res.status(200).json({
                 success: true,
-                message: "Booking updated successfully",
+                message: "Booking marked as returned. Vehicle is now available",
                 data: result,
             });
         } else if (role === "customer") {
@@ -92,7 +92,7 @@ const updateBooking = async (req: Request, res: Response) => {
                 );
                 res.status(200).json({
                     success: true,
-                    message: "Booking updated successfully",
+                    message: "Booking cancelled successfully",
                     data: result,
                 });
             } else {
