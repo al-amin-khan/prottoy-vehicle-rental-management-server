@@ -87,7 +87,8 @@ const updateBooking = async (req: Request, res: Response) => {
             if (status === "cancelled") {
                 const result = await bookingServices.updateBooking(
                     Number(bookingId),
-                    status
+                    status,
+                    role
                 );
                 res.status(200).json({
                     success: true,
