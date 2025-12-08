@@ -75,7 +75,8 @@ const updateBooking = async (req: Request, res: Response) => {
         if (role === "admin") {
             const result = await bookingServices.updateBooking(
                 Number(bookingId),
-                status
+                status,
+                role
             );
             res.status(200).json({
                 success: true,
